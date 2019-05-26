@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --- problem 1
 $ delay 2000
 $ show goal
@@ -71,3 +72,78 @@ $ git cherry-pick c3 c4 c7
 $ delay 2000
 $ show goal
 $ git rebase -i HEAD~4
+=======
+--- problem 1
+$ delay 2000
+$ show goal
+$ git commit
+$ git commit
+
+--- problem 2
+$ delay 2000
+$ show goal
+$ git branch bugFix
+$ git checkout bugFix
+
+--- problem 3
+$ delay 2000
+$ show goal
+$ git branch bugFix
+$ git checkout bugFix
+$ git commit
+$ git checkout master
+$ git commit
+$ git merge bugFix
+
+--- problem 4
+$ delay 2000
+$ show goal
+$ git branch bugFix
+$ git checkout bugFix
+$ git commit
+$ git checkout master
+$ git commit
+$ git checkout bugFix
+$ git rebase master
+
+--- problem 5
+$ delay 2000
+$ show goal
+$ git checkout c4
+
+--- problem 6
+$ delay 2000
+$ show goal
+$ git checkout bugFix
+$ git checkout HEAD^
+
+--- problem 7
+$ delay 2000
+$ show goal
+$ git checkout C6
+$ git branch -f bugFix HEAD~3
+$ git commit
+$ git branch -f master HEAD^
+$ git checkout C1
+$ git branch -f bugFix HEAD^
+
+--- problem 8
+$ delay 2000
+$ show goal
+$ git checkout C3
+$ git checkout local
+$ git reset HEAD^
+$ git checkout C2
+$ git checkout pushed
+$ git revert pushed
+
+--- problem 9
+$ delay 2000
+$ show goal
+$ git cherry-pick c3 c4 c7
+
+--- problem 10
+$ delay 2000
+$ show goal
+$ git rebase -i HEAD~4
+>>>>>>> a3eea1fce6e178ad1202d36893ff81f860efb09f
