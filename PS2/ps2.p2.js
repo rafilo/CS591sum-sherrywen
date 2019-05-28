@@ -1,3 +1,4 @@
+`use strict`
 const splitword = str => str.split(` `);
 
 function * wordsInSentence(str){
