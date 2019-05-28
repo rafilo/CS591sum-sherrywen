@@ -1,7 +1,6 @@
 `use strict`
 const cube = input => {
-    for(const arg of input){
-        console.log(arg**3);
-    }
+    console.log(input**3)
 }
-cube([1,2,3,4,5,6,7]);
+
+let arr = [1,2,3,4,5,6,7].forEach(function(elem){cube(elem)});
