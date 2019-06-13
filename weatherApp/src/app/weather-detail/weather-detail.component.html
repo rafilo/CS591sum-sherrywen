@@ -1,0 +1,40 @@
+<div *ngIf="weather">
+
+    <h2>{{weather.timezone | uppercase}} Details</h2>
+    <div>
+      <span>summary of the weather: </span>{{weather.summary}}
+    </div>
+  
+    <div>
+      <span>current temperature and apparent Temperature: </span>{{weather.temperature}}<span> /</span> {{weather.apparentTemperature}}
+    </div>
+  
+    <div>
+      <span>precipIntensity and percipProbability: </span>{{weather.precipIntensity}}<span> /</span> {{weather.precipProbability}} 
+    </div>
+  
+    <div>
+      <span>humidity: </span>{{weather.humidity}}
+    </div>
+  
+    <div>
+      <span>pressure: </span>{{weather.pressure}}
+    </div>
+  
+    <div>
+      <span>windSpeed: </span>{{weather.windSpeed}}
+    </div>
+  
+    <div>
+      <span>visibility: </span>{{weather.visibility}}
+    </div>
+  
+    <div>
+      <label>name:
+        <input [(ngModel)]="weather.timezone" placeholder="name"/>
+      </label>
+    </div>
+  
+  </div>
+
+  <button (click)="goBack()">go back</button>

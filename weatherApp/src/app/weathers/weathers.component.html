@@ -1,0 +1,9 @@
+<h2> samples of weather from several cities</h2>
+<ul class='weatherList'>
+  <li *ngFor="let weather of weatherList">
+    <a routerLink='/detail/{{weather.id}}'>
+      <span class='badge'>{{ weather.timezone }}</span>
+    </a>
+  </li>
+</ul>
+

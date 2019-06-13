@@ -1,0 +1,9 @@
+<h3>weather for first four cities</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let weather of weatherList" class="col-1-4"
+      routerLink='/detail/{{weather.id}}'>
+    <div class="module hero">
+      <h4>{{weather.timezone}}</h4>
+    </div>
+  </a>
+</div>
