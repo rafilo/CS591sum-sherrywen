@@ -1,0 +1,8 @@
+<div *ngIf="selectedWeather">
+  <h3>Details for {{selectedWeather.timezone}}</h3>
+  <input type="text" [(ngModel)]="selectedWeather.timezone"><br/>
+  <input type="text" [(ngModel)]="selectedWeather.minute"><br/>
+  <input type="text" [(ngModel)]="selectedWeather.hours"><br/>
+  <input type="text" [(ngModel)]="selectedWeather.days"><br/>
+
+</div>

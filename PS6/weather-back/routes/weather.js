@@ -8,10 +8,11 @@ const getReq = function() {
   return new Promise(function (resolve, reject) {
     const options = {
       method: 'GET',
-      url: 'https://api.darksky.net/forecast/78aa9644b58037543b33e38991978d35/42.361145,-71.057083',
+      url: 'https://api.darksky.net/forecast/78aa9644b58037543b33e38991978d35/51.509865,-0.118092',
       headers:{
         'key' : '78aa9644b58037543b33e38991978d35',
-        'cache-control': 'no-cache'
+        'cache-control': 'no-cache',
+        'Access-Control-Allow-Origin': '*'
       }
     }
     rp(options, function(error, response, body){
@@ -28,16 +29,14 @@ router.get('/', (req, res, next) =>{
   .then(function(body){
     const parsedBody = JSON.parse(body);
     let arrangedData = {
-      latitude: JSON.stringify(parsedBody.latitude),
-      longitude: JSON.stringify(parsedBody.longitude),
-      timezone: JSON.stringify(parsedBody.timezone),
-      currently: JSON.stringify(parsedBody.currently),
-      minutelySum: JSON.stringify(parsedBody.minutely.summary),
-      hourlySum: JSON.stringify(parsedBody.hourly.summary),
-      dailySum: JSON.stringify(parsedBody.daily.summary),
-      flags: JSON.stringify(parsedBody.flags)
+      timezone: parsedBody.timezone,
+      minute: parsedBody.minutely.summary,
+      hours: parsedBody.hourly.summary,
+      days: parsedBody.daily.summary,
+
     }
-    res.render('weather', {layout: 'layout', json: arrangedData});
+    res.send(arrangedData);
+    //res.render('weather', {json:arrangedData});
   })
   .catch(function(err){
     console.log('Error!');
