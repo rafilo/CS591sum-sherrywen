@@ -1,16 +1,17 @@
+var keys = require('../config.js')
 var express = require('express');
 var unirest = require('unirest');
 var rp = require('request-promise');
 var async = require('async');
 var router = express.Router();
 
+var key = keys.KEY;
 const getReq = function() {
   return new Promise(function (resolve, reject) {
     const options = {
       method: 'GET',
       url: 'https://api.darksky.net/forecast/78aa9644b58037543b33e38991978d35/42.361145,-71.057083',
       headers:{
-        'key' : '78aa9644b58037543b33e38991978d35',
         'cache-control': 'no-cache'
       }
     }
