@@ -6,6 +6,28 @@
 </div>
 
 <button (click)='getWeathers()'>get data</button>
+<h2> samples of weather from several cities</h2>
+<ul class='weathers'>
+  <li *ngFor="let weather of weathers">
+      <span class='badge'>{{ weather.timezone }}</span>
+        <h2>{{weather.timezone | uppercase}} Details</h2>
+        <div>
+          <span class='badge'>summary of the weather in minutes: </span>{{weather.minute }}
+        </div>
+      
+        <div>
+          <span class='badge'>summary of the weather in hours: </span>{{weather.hours}}
+        </div>
+      
+        <div>
+          <span class='badge'>summary of the weather in days: </span>{{weather.days}}
+        </div>
+      
+        <div>
+          <label>name:
+            <input [(ngModel)]="weather.timezone" placeholder="name"/>
+          </label>
+        </div>   
+  </li>
+</ul>
 
-
-<app-create-weather></app-create-weather>

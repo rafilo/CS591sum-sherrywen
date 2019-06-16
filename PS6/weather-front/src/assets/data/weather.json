@@ -1,17 +1,15 @@
 [
 {
-    "id": 1,
     "timezone": "America/New_York",
-    "minutelySum": "Partly cloudy for the hour.",
-    "hourlySum": "Light rain throughout the day.",
-    "dailySum": "Rain tomorrow through Friday, with high temperatures falling to 62°F on Friday."
+    "minute": "Partly cloudy for the hour.",
+    "hours": "Light rain throughout the day.",
+    "days": "Rain tomorrow through Friday, with high temperatures falling to 62°F on Friday."
     },
 
     {
-        "id": 2,
         "timezone": "Europe/London",
-        "minutelySum": "Partly cloudy for the hour.",
-        "hourlySum": "Mostly cloudy throughout the day.",
-        "dailySum": "Light rain on Tuesday and Thursday, with high temperatures rising to 77°F on Tuesday."
+        "minute": "Partly cloudy for the hour.",
+        "hours": "Mostly cloudy throughout the day.",
+        "days": "Light rain on Tuesday and Thursday, with high temperatures rising to 77°F on Tuesday."
         }
 ]

@@ -10,9 +10,9 @@ import { Observable, throwError } from 'rxjs';
 
 export class WeatherService {
 
-  endpoint = 'localhost:3000/weather';
+  endpoint = './assets/data/weather.json';
   constructor(private http: HttpClient) { }
-
+/*
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ export class WeatherService {
       'Access-Control-Allow-Methods': "GET,POST,OPTIONS,DELETE,PUT"
       })
   }
-
+*/
   getWeathers(): Observable<Weather[]>{
     return this.http.get<Weather[]>(this.endpoint);
   }
