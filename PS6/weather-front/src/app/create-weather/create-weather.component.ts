@@ -1,22 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Weather } from '../model/weather';
-import { WeatherService } from '../weather.service';
+import { WeatherService } from '../service/weather.service';
+
+
 @Component({
   selector: 'app-create-weather',
   templateUrl: './create-weather.component.html',
   styleUrls: ['./create-weather.component.css']
 })
 export class CreateWeatherComponent implements OnInit {
-  myweather: Weather;
 
+  myWeather: Weather;
 
   addWeather(): void{
-    const newWeather: Weather ={
-      timezone: this.myweather.timezone,
-      minute: this.myweather.minute,
-      hours: this.myweather.hours,
-      days: this.myweather.days
+    const newWeather: Weather = {
+      timezone: this.myWeather.timezone,
+      minute: this.myWeather.minute,
+      hour: this.myWeather.hour,
+      day: this.myWeather.day
     };
+
     this.weatherService.addWeather(newWeather)
       .subscribe();
   }

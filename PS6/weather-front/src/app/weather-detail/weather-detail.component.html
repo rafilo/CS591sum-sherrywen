@@ -1,23 +1,14 @@
-<div *ngIf="weather">
+<div *ngIf="selectedWeather">
+  <h3>Details for {{selectedWeather.timezone}}</h3>
+  <li>
+    weather in minute: {{ selectedWeather.minute }}
+  </li>
+  <li>
+    weather in hours: {{ selectedWeather.hour }}
+  </li>
 
-  <h2>{{weather.timezone | uppercase}} Details</h2>
-  <div>
-    <span>summary of the weather in minutes: </span>{{weather.minute}}
-  </div>
-
-  <div>
-    <span>summary of the weather in hours: </span>{{weather.hours}}
-  </div>
-
-  <div>
-    <span>summary of the weather in days: </span>{{weather.days}}
-  </div>
-
-  <div>
-    <label>name:
-      <input [(ngModel)]="weather.timezone" placeholder="name"/>
-    </label>
-  </div>
+  <li>
+    weather in days: {{ selectedWeather.day }}
+  </li>
 
 </div>
-

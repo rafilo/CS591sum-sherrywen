@@ -7,11 +7,10 @@ import { Weather } from '../model/weather';
   styleUrls: ['./weather-detail.component.css']
 })
 export class WeatherDetailComponent implements OnInit {
-  @Input() weather: Weather;
+  @Input() selectedWeather: Weather;
   constructor() { }
 
   ngOnInit() {
-    
   }
 
 }

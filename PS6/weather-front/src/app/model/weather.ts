@@ -1,6 +1,6 @@
-export class Weather {
+export class Weather{
     timezone: string;
     minute: string;
-    hours: string;
-    days: string;
+    hour: string;
+    day: string;
 }

@@ -1,13 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-
-import {FormsModule} from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
 import { CreateWeatherComponent } from './create-weather/create-weather.component';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
-import { WeatherService } from './weather.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +18,7 @@ import { WeatherService } from './weather.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [WeatherService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

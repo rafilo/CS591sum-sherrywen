@@ -1,9 +1,9 @@
 <div>
 
-  <label>city</label> <input type="text" [(ngModel)]="myweather.timezone" required>
-  <label>weather in minute</label> <input type="text" [(ngModel)] = "myweather.minute" required>
-  <label>weather in hour</label> <input type="text" [(ngModel)]="myweather.hours" required>
-  <label>weather in days</label> <input type="text" [(ngModel)]="myweather.days" required>
+  <label>name of city: </label> <input type="text" [(ngModel)]="myWeather.timezone" required>
+  <label>weather in minutes: </label> <input type="text" [(ngModel)] = "myWeather.minute" required>
+  <label>weather in hours: </label> <input type="text" [(ngModel)]="myWeather.hour" required>
+  <label>weather in days: </label> <input type="text" [(ngModel)]="myWeather.day" required>
   <button (click)="addWeather()">Add</button>
 
 </div>

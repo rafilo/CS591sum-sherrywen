@@ -1,5 +1,4 @@
 var express = require('express');
-var unirest = require('unirest');
 var rp = require('request-promise');
 var async = require('async');
 var router = express.Router();
@@ -12,6 +11,7 @@ const getReq = function() {
       headers:{
         'key' : '78aa9644b58037543b33e38991978d35',
         'cache-control': 'no-cache',
+        'Access-Control-Allow-Origin': '*' 
       }
     }
     rp(options, function(error, response, body){
@@ -23,6 +23,26 @@ const getReq = function() {
   });
 };
 
+const getreqid = (id) =>{
+  return new Promise(function (resolve, reject){
+    const options = {
+      method: 'GET',
+      url: 'https://api.darksky.net/forecast/78aa9644b58037543b33e38991978d35/' + id,
+      headers:{
+        'key' : '78aa9644b58037543b33e38991978d35',
+        'cache-control': 'no-cache',
+        'Access-Control-Allow-Origin': '*' 
+      }
+    }
+    rp(options, function(error, response, body){
+      if (error) reject(new Error(error));
+      else{
+        resolve(body);
+      }
+    });
+  })
+}
+
 router.get('/', (req, res, next) =>{
   getReq()
   .then(function(body){
@@ -30,10 +50,11 @@ router.get('/', (req, res, next) =>{
     let arrangedData = {
       timezone: parsedBody.timezone,
       minute: parsedBody.minutely.summary,
-      hours: parsedBody.hourly.summary,
-      days: parsedBody.daily.summary,
+      hour: parsedBody.hourly.summary,
+      day: parsedBody.daily.summary,
 
     }
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     res.send(arrangedData);
     //res.render('weather', {json:arrangedData});
   })
@@ -42,4 +63,23 @@ router.get('/', (req, res, next) =>{
   })
 })
 
+router.get('/:latilongti', (req, res, next) =>{
+  getreqid(req.params.latilongti)
+  .then(function(body){
+    const parsedBody = JSON.parse(body);
+    let arrangedData = {
+      timezone: parsedBody.timezone,
+      minute: parsedBody.minutely.summary,
+      hour: parsedBody.hourly.summary,
+      day: parsedBody.daily.summary,
+
+    }
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.send(arrangedData);
+    //res.render('weather', {json:arrangedData});
+  })
+  .catch(function(err){
+    console.log('Error!');
+  })
+})
 module.exports = router;
