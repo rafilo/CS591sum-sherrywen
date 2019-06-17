@@ -17,7 +17,9 @@ export class WeatherService {
   }
 
   addWeather(newWeather: Weather): Observable<any>{
-    return this.httpClient.post(this.endpoint,newWeather, this.httpOptions);
+    return this.httpClient.post<any>(this.endpoint,newWeather);
   }
+
+  
   constructor(private httpClient: HttpClient) { }
 }

@@ -10,7 +10,12 @@ import { WeatherService } from '../service/weather.service';
 })
 export class CreateWeatherComponent implements OnInit {
 
-  myWeather: Weather;
+  myWeather ={
+    timezone: '',
+    minute: '',
+    hour: '',
+    day: ''
+  }
 
   addWeather(): void{
     const newWeather: Weather = {

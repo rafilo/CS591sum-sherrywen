@@ -82,4 +82,10 @@ router.get('/:latilongti', (req, res, next) =>{
     console.log('Error!');
   })
 })
+
+router.post('/',(req, res, next) =>{
+  const body = JSON.parse(res.body);
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.send(body);
+})
 module.exports = router;
