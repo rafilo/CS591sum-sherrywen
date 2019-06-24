@@ -10,14 +10,13 @@ import { WeatherService } from './weather.service';
 export class AppComponent {
   title = 'weather-front';
   selectedWeather: Weather = null;
-  weathers: Weather[];
+  weathers = [];
 
   getWeathers(): void{
     this.weatherService.getWeathers()
       .subscribe(weathers =>{
         this.weathers = weathers;
         console.log(`current weather fetched ${JSON.stringify(this.weathers)}`)
-
       })
   }
 

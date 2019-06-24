@@ -5,24 +5,6 @@ const rp = require('request-promise')
 const request = require('request');
 
 /* GET home page. */
-const getReq = function() {
-    return new Promise(function (resolve, reject) {
-      const options = {
-        method: 'GET',
-        url: 'https://localhost:3000/weather',
-        headers:{
-          'cache-control': 'no-cache',
-          'Access-Control-Allow-Origin': '*' 
-        }
-      }
-      rp(options, function(error, response, body){
-        if (error) reject(new Error(error));
-        else{
-          resolve(body);
-        }
-      });
-    });
-  };
 
 db.connect((err, client) => {
     if (err) {
@@ -52,6 +34,7 @@ router.post('/', function (req, res, next) {
     //     res.send('success');
     // });
     mongo.collection('weathers').insertOne(req.body, function (err, r) {
+      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
         res.send('success');
     });
 });
@@ -62,6 +45,7 @@ router.get('/:timezone', function (req, res, next)  {
     mongo.collection('weathers').find({timezone: req.params.timezone}).
         toArray(function(err, docs) {
             console.log(docs)
+            res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
             res.send(docs);
         })
     });
@@ -72,10 +56,11 @@ router.get('/bare', function (req, res, next)  {
     mongo.collection('weathers').find().
     toArray(function(err, docs) {
         console.log(docs)
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
         res.send(docs);
     })
 });
-
+/*
 router.get('/', function(req, res, next) {
   let mongo = db.getDB();
   request('http://localhost:3000/weather', function(res, err, body){
@@ -95,5 +80,5 @@ router.get('/', function(req, res, next) {
   
 });
 });
-
+*/
 module.exports = router;
