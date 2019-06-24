@@ -11,11 +11,12 @@ export class AppComponent {
   title = 'weather-front';
   selectedWeather: Weather = null;
   weathers = [];
-
+  information = 'current weather fetched from: ' + this.weatherService.endpoint;
   getWeathers(): void{
     this.weatherService.getWeathers()
       .subscribe(weathers =>{
         this.weathers = weathers;
+        console.log('current weather fetched from: ' + this.weatherService.endpoint);
         console.log(`current weather fetched ${JSON.stringify(this.weathers)}`)
       })
   }

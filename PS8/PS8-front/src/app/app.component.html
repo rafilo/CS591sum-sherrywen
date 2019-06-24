@@ -7,6 +7,10 @@
 </div>
 
 <div>
+  {{information}}
+</div>
+
+<div>
   <ul>
     <li *ngFor="let weather of weathers">
       <label (click)="displayWeatherDetail(weather)">{{weather.timezone}}</label>
