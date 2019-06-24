@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../mongo/mongo');
+const rp = require('request-promise')
+const request = require('request');
+
 /* GET home page. */
 const getReq = function() {
     return new Promise(function (resolve, reject) {
@@ -21,7 +24,6 @@ const getReq = function() {
     });
   };
 
-  
 db.connect((err, client) => {
     if (err) {
         console.log(`ERR: ${err}`);
@@ -30,14 +32,13 @@ db.connect((err, client) => {
     }
 });
 
+// how to initialize the database?
 router.post('/', function (req, res, next) {
     // change to weather model
-    getReq().
-    then(function(body){
-    let timezone = body.timezone;
-    let minute = body.minute;
-    let hour = body.hour;
-    let day = body.day;
+    let timezone = req.body.timezone;
+    let minute = req.body.minute;
+    let hour = req.body.hour;
+    let day = req.body.day;
 
     let weatherObj = {
         timezone: timezone,
@@ -50,15 +51,15 @@ router.post('/', function (req, res, next) {
     // mongo.collection('names').insertOne(nameObj, function (err, r) {
     //     res.send('success');
     // });
-    mongo.collection('weather').insertOne(body, function (err, r) {
+    mongo.collection('weathers').insertOne(req.body, function (err, r) {
         res.send('success');
     });
 });
-});
+
 
 router.get('/:timezone', function (req, res, next)  {
     let mongo = db.getDB();
-    mongo.collection('weather').find({timezone: req.params.timezone}).
+    mongo.collection('weathers').find({timezone: req.params.timezone}).
         toArray(function(err, docs) {
             console.log(docs)
             res.send(docs);
@@ -67,14 +68,32 @@ router.get('/:timezone', function (req, res, next)  {
 
 
 router.get('/bare', function (req, res, next)  {
-
-    let mongo = db.getDB();
-    mongo.collection('weather').find().
+  let mongo = db.getDB();
+    mongo.collection('weathers').find().
     toArray(function(err, docs) {
         console.log(docs)
         res.send(docs);
     })
 });
 
+router.get('/', function(req, res, next) {
+  let mongo = db.getDB();
+  request('http://localhost:3000/weather', function(res, err, body){
+    const parsedBody = JSON.parse(body);
+    
+    let arrangedData = {
+      timezone: parsedBody.timezone,
+      minute: parsedBody.minute,
+      hour: parsedBody.hour,
+      day: parsedBody.day
+    }
+    
+    res.send(arrangedData);
+    mongo.collection('weathers').insertOne(parsedBody, function (err, r) {
+      res.send('success');
+  });
+  
+});
+});
 
 module.exports = router;
